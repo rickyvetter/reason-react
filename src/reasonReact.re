@@ -119,7 +119,8 @@ type jsComponentThis 'state 'props =
     state : totalState 'state,
     props : Js.t {. reasonProps : 'props},
     setState : ((totalState 'state => 'props => totalState 'state) => unit) [@bs.meth],
-    jsPropsToReason : option (jsPropsToReason 'props 'state)
+    jsPropsToReason : option (jsPropsToReason 'props 'state),
+    context : 'context .'context
   }
 /**
  * `totalState` tracks all of the internal reason API bookkeeping, as well as
@@ -391,10 +392,12 @@ let createClass (type reasonState) debugName :reactClass =>
           )
         }
       };
-      pub shouldComponentUpdate nextProps nextState _ => {
+      pub shouldComponentUpdate nextProps nextState nextContext => {
         let thisJs: jsComponentThis reasonState element = [%bs.raw "this"];
         let curProps = thisJs##props;
         let propsWarrantRerender = nextProps !== curProps;
+        let curContext = thisJs##context;
+        let contextWarrantsRerender = nextContext !== curContext;
 
         /**
          * Now, we inspect the next state that we are supposed to render, and ensure that
@@ -409,7 +412,9 @@ let createClass (type reasonState) debugName :reactClass =>
         let nextReasonStateVersionUsedToComputeSubelements = nextState##reasonStateVersionUsedToComputeSubelements;
         let stateChangeWarrantsComputingSubelements =
           nextReasonStateVersionUsedToComputeSubelements !== nextReasonStateVersion;
-        let ret = propsWarrantRerender || stateChangeWarrantsComputingSubelements;
+        let ret =
+          propsWarrantRerender ||
+          contextWarrantsRerender || stateChangeWarrantsComputingSubelements;
         /* Mark ourselves as all caught up! */
         nextState##reasonStateVersionUsedToComputeSubelements#=nextReasonStateVersion;
         ret
