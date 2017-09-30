@@ -2006,16 +2006,6 @@ footer .copyright {
   }
 }
 
-@media (max-width: 1024px) {
-  .mainContainer .wrapper p {
-    font-size: 16px;
-  }
-
-  .fuck {
-    flex-direction: column;
-  }
-}
-
 /* code */
 .prism {
   border: 1px solid #eee;
@@ -2027,17 +2017,6 @@ footer .copyright {
 }
 .prism .comment {
   opacity: 0.7;
-}
-
-@media only screen and (min-width: 480px) {
-  .projectTitle {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .projectTitle > small {
-    max-width: 40%;
-  }
 }
 
 a.hash-link {
@@ -2110,28 +2089,97 @@ a.hash-link {
 
 .homeWrapperWrapper {
   background-color: #f6f4f4;
-  background-repeat: no-repeat;
-  background-size: 50%;
-  background-repeat: no-repeat;
-  background-position: 100% 100px;
+  overflow: hidden;
+  position: relative;
 }
 
-.fuck {
+.spinner {
+  margin: auto;
+  position: absolute;
+  width: 800px;
+  left: 0px;
+  bottom: -400px;
+  animation:spin 750s linear infinite;
+  transition: opacity 2s;
+}
+
+@keyframes spin { 100% {transform:rotate(360deg); } }
+
+.homeWrapperInner {
   display: flex;
-  flex: 1;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
+  padding: 20px 0px 20px 0px;
 }
 
-.fuckinner {
+.homeCodeSnippet {
   text-align: initial;
+  padding-top: 20px;
 }
 
-.fuckinner2 {
-  font-size: 20px;
+.homeCodeSnippet .prism {
+  background-color: transparent;
+  border: none;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin: 0;
+  color: rgb(57, 57, 57);
+  font-size: 14px;
 }
 
-/* overrides */
+.homeTagLine {
+  font-size: 24px;
+  font-weight: 300;
+  max-width: 500px;
+  line-height: 1.5em;
+}
+
+.getStarted {
+  background-color: #db4d3f;
+  color: white;
+}
+
+.homeThreePoints, .homeTwoPoints {
+  padding-top: 20px;
+}
+
+.homeTwoPoints {
+  /*background: linear-gradient(#f6f4f4, transparent);*/
+  display: flex;
+}
+
+.homeQuickStart {
+  border: 1px solid red;
+}
+
+.homeExamples {
+  border: 1px solid blue;
+}
+
+.leftRightContainer .wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 1024px;
+}
+
+@media (max-width: 736px) {
+  .leftRightContainer .wrapper {
+    flex-direction: column;
+  }
+}
+
+.quickStartAndExamples .imageAlignTop .blockImage {
+    max-width: 226px;
+}
+
+/* companies page */
+.button.addCompanyButton {
+  margin-top: 2em;
+}
+
+/* overrides. Most of these should be upstreamed into docusaurus */
 
 .read-more .button {
   /* these buttons really shouldn't have any margin */
@@ -2186,4 +2234,41 @@ nav.toc .toggleNav ul li a.navItemActive {
 
 .navGroup {
   background-color: #f6f4f4 !important;
+}
+
+.projectTitle {
+  font-size: 50px;
+  font-weight: bold;
+  font-family: proxima-nova,sans-serif;
+}
+
+/* end override */
+
+@media (max-width: 1024px) {
+  .mainContainer .wrapper p {
+    font-size: 16px;
+  }
+
+  .homeWrapperInner {
+    flex-direction: column;
+  }
+
+  .projectTitle {
+    font-size: 40px;
+  }
+
+  .spinner {
+    opacity: 0;
+  }
+}
+
+/* mobile */
+@media (max-width: 480px) {
+  .projectTitle {
+    font-size: 30px;
+  }
+
+  .homeCodeSnippet .prism {
+    font-size: 13px;
+  }
 }
