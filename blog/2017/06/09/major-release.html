@@ -8,7 +8,7 @@
             languagesDropDown.className = "hide";
           }
         });
-      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Recent Posts</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Recent Posts</h3><ul><li class="navListItem"><a class="navItem" href="/reason-react/blog/2017/09/01/reducers.html">Reducers Are Here!</a></li><li class="navListItem"><a class="navItem" href="/reason-react/blog/2017/07/05/021.html">0.2.1 Released</a></li><li class="navListItem"><a class="navItem" href="/reason-react/blog/2017/06/21/015.html">0.1.5 Released</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/reason-react/blog/2017/06/09/major-release.html">Major New Release!</a></li></ul></div></div></section></div><script>
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Recent Posts</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Recent Posts</h3><ul><li class="navListItem"><a class="navItem" href="/reason-react/blog/2017/10/02/new-docs-site.html">New Docs Site</a></li><li class="navListItem"><a class="navItem" href="/reason-react/blog/2017/09/01/reducers.html">Reducers Are Here!</a></li><li class="navListItem"><a class="navItem" href="/reason-react/blog/2017/07/05/021.html">0.2.1 Released</a></li><li class="navListItem"><a class="navItem" href="/reason-react/blog/2017/06/21/015.html">0.1.5 Released</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/reason-react/blog/2017/06/09/major-release.html">Major New Release!</a></li></ul></div></div></section></div><script>
           var toggler = document.getElementById('navToggler');
           var nav = document.getElementById('docsNav');
           toggler.onclick = function() {
@@ -16,11 +16,18 @@
           };
         </script></nav></div><div class="container mainContainer documentContainer postContainer blogContainer"><div class="wrapper"><div class="lonePost"><div class="post"><header class="postHeader"><p class="post-authorName"><a target="_blank"></a><br/></p><h1><a href="/reason-react/blog/2017/06/09/major-release.html">Major New Release!</a></h1><p class="post-meta">June 9, 2017</p></header><div><p>0.1.4 is released! We&#x27;ve got a new documentation website here, a brand new ReasonReact API, a smooth migration guide, and best of all: <strong>no breaking change</strong>! Head over to <a href="https://github.com/reasonml/reason-react/blob/master/HISTORY.md#014" target="_blank">HISTORY.md</a> for the incremental migration.</p><div><!--truncate-->
 
-</div><p>This is a very exciting release for us. We&#x27;ve been working on it while taking into account the external and internal folks&#x27; feedback. The new API should feel very, very familiar to users of ReactJS. The previous API&#x27;s corner-cases are gone too. In short: improvements across the board (API, codegen, type safety, speed, familiarity, etc.).</p><p>As always, we&#x27;re on <a href="https://discord.gg/reasonml" target="_blank">Discord</a> if you need any help!</p></div></div></div><div class="blog-recent"><a class="button" href="/reason-react/blog">Recent Posts</a></div></div></div></div><span><script src="/reason-react/js/redirectBlog.js"></script><script src="/reason-react/js/pjax-api.js"></script><script>new Pjax({
-  areas: [
-    // try to use the first query.
-    '.mainContainer, .toc .navWrapper',
-    // fallback
-    'body'
-  ]
-});</script></span></div></body></html>
+</div><p>This is a very exciting release for us. We&#x27;ve been working on it while taking into account the external and internal folks&#x27; feedback. The new API should feel very, very familiar to users of ReactJS. The previous API&#x27;s corner-cases are gone too. In short: improvements across the board (API, codegen, type safety, speed, familiarity, etc.).</p><p>As always, we&#x27;re on <a href="https://discord.gg/reasonml" target="_blank">Discord</a> if you need any help!</p></div></div></div><div class="blog-recent"><a class="button" href="/reason-react/blog">Recent Posts</a></div></div></div></div><span><script src="/reason-react/js/redirectBlog.js"></script><script src="/reason-react/js/pjax-api.js"></script><script>window.foo = new Pjax({
+          areas: [
+            // try to use the first query.
+            '.mainContainer, .docsNavContainer .toc .navWrapper',
+            // fallback
+            'body'
+          ],
+          link: '.docsNavContainer:not(.docsSliderActive) a'
+        });
+        var languagesMenuItemCopy = document.getElementById("languages-menu");
+        languagesMenuItemCopy.addEventListener("click", function(e){
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+        });</script></span></div></body></html>

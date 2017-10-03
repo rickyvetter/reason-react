@@ -4,9 +4,9 @@
 
 (function() {
   var faq = {
-    '#frequently-asked-questions-common-type-errors': 'common-errors.html',
+    '#frequently-asked-questions-common-type-errors': 'im-having-a-type-error.html',
     '#frequently-asked-questions-how-do-i-do-props-spreading-div-thisprops': 'props-spread.html',
-    default: 'common-errors.html'
+    default: 'im-having-a-type-error.html'
   };
   var examples = {
     '#examples-simple': 'simple.html',
@@ -17,10 +17,10 @@
     default: 'simple.html'
   };
   var gettingStarted = {
-    '#getting-started': 'getting-started.html',
-    '#getting-started-bsb': 'getting-started.html#bsb',
-    '#getting-started-reason-scripts': 'getting-started.html#reason-scripts',
-    default: 'getting-started.html'
+    '#getting-started': 'installation.html',
+    '#getting-started-bsb': 'installation.html#bsb',
+    '#getting-started-reason-scripts': 'installation.html#reason-scripts',
+    default: 'installation.html'
   };
   // redirects[page][hash] => new page;
   // yarn start only supports faq.html format, but gh pages upens up the other two.
@@ -28,7 +28,7 @@
     'faq.html': faq,
     'faq': faq,
     'faq/': faq,
-    'examples': examples,
+    'examples.html': examples,
     'examples': examples,
     'examples/': examples,
     'gettingStarted.html': gettingStarted,
@@ -36,13 +36,14 @@
     'gettingStarted/': gettingStarted,
   };
   var hash = window.location.hash;
+  var base = '/reason-react/docs/en/';
   var path = window.location.pathname.split('/');
   var page = path[path.length - 1];
   if (redirects[page]) {
     var link = document.getElementById('redirectLink');
     var location = base +
       (redirects[page][hash] || redirects[page].default);
-    link.textContent = 'https://reasonml.github.io/reason-react/docs/en/' + location;
+    link.textContent = 'https://reasonml.github.io' + location;
     link.href = location;
   }
 })();
