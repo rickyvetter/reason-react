@@ -2010,10 +2010,6 @@ a.hash-link {
   transition: none;
 }
 
-.fixedHeaderContainer {
-  padding: 9px 0;
-}
-
 /* only show language icon */
 #languages-menu {
   font-size: 0px;
@@ -2159,6 +2155,22 @@ a.hash-link {
 
 /* overrides. Most of these should be upstreamed into docusaurus */
 
+/* fonts */
+body {
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif;
+}
+.projectTitle {
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif;
+}
+
+code, pre {
+  font-family: source-code-pro,Menlo,Monaco,Consolas,Courier New,monospace;
+}
+
 /* code */
 .prism {
   margin-left: -15px;
@@ -2166,6 +2178,7 @@ a.hash-link {
   border: 1px solid #eee;
   border-radius: 6px;
   padding: 15px;
+  overflow: auto;
 }
 .prism.language-javascript {
   background-color: rgba(247, 223, 30, 0.03);
@@ -2205,6 +2218,21 @@ a.hash-link {
   height: auto;
 }
 
+.fixedHeaderContainer {
+  /* why is it 8 at bottom in the original? */
+  padding: 9px 0 9px 0;
+}
+
+.navigationSlider .slidingNav {
+  /* fixed makes this calculation *much* easier */
+  box-sizing: border-box;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: auto;
+}
+
 .mainContainer .wrapper .post .postHeader {
   /* used to be 2em. too extreme */
   padding: 1em 0 0;
@@ -2212,6 +2240,11 @@ a.hash-link {
 
 .mainContainer .wrapper p {
   padding: 0.8em 0 0 0;
+}
+
+.mainContainer .wrapper p,
+.mainContainer .wrapper ul li,
+.mainContainer .wrapper ol li {
   line-height: 1.7;
 }
 
@@ -2262,13 +2295,25 @@ nav.toc .toggleNav ul li a.navItemActive {
   border-radius: 3px;
 }
 
+/* the empty space at the beginning of a standalone blog post is huge */
+.blogContainer .lonePost {
+  margin-top: 40px;
+}
+@media (max-width: 1024px) {
+  .blogContainer .lonePost {
+    margin-top: 20px;
+  }
+
+  .mainContainer .wrapper p,
+  .mainContainer .wrapper ul li,
+  .mainContainer .wrapper ol li {
+    font-size: 16px;
+  }
+}
+
 /* end override */
 
 @media (max-width: 1024px) {
-  .mainContainer .wrapper p {
-    font-size: 16px;
-  }
-
   .homeWrapperInner {
     flex-direction: column;
   }
